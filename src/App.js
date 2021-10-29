@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home/Home';
 import PackageDetails from './components/Home/Packages/PackageDetails';
+import Login from './components/Login/Login';
 import Footer from './components/Shared/Footer';
 import Navigation from './components/Shared/Navigation';
 
@@ -22,6 +23,9 @@ function App() {
             </Route>
             <Route exact path='/packages/:packageId'>
               <PackageDetails></PackageDetails>
+            </Route>
+            <Route path='/login'>
+              <Login></Login>
             </Route>
           </Switch>
           <Footer></Footer>

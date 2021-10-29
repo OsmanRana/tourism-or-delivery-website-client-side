@@ -1,8 +1,11 @@
 import React from 'react';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
+import useFirebase from '../Hooks/useFirebase';
 
 const Navigation = () => {
+    const {user, logOut} = useFirebase();
     return (
         <div>
             <Navbar collapseOnSelect expand="lg" variant="light">
@@ -13,12 +16,14 @@ const Navigation = () => {
                         <Nav className="me-auto fw-bold text-uppercase">
                             <Nav.Link as={HashLink} to="/home#home">Home</Nav.Link>
                             <Nav.Link as={HashLink} to="/gellary#gellary">Gellary</Nav.Link>
-                            {/* <Nav.Link as={HashLink} to="/services#services">Services</Nav.Link>
-                            <Nav.Link as={HashLink} to="/departments#departments">Departments</Nav.Link> */}
+                            
 
                         </Nav>
                         <Nav>
-                            {/* {
+                            {
+                                
+                            }
+                            {
                                 user.displayName && <p className="my-auto mx-3">{user.displayName}</p>
                             }
                             {
@@ -29,9 +34,8 @@ const Navigation = () => {
                                     <Link to="/login"><Button variant="light">Log In</Button></Link>
                             }
                             {
-                                !user.email && !user.uid ? <Link to="/register" ><Button className="ms-3" variant="primary">Register</Button></Link> :
-                                    <span></span>
-                            } */}
+                                 <Link to="/register" ><Button className="ms-3" variant="primary">Admin</Button></Link> 
+                            }
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
