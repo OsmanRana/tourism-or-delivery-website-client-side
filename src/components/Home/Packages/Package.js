@@ -6,7 +6,7 @@ const Package = (props) => {
     const { image, name, decription, _id } = props.pack;
     
     const color2 = { red: Math.floor(Math.random() * 255), green: Math.floor(Math.random() * 255), blue: Math.floor(Math.random() * 255) };
-    console.log(props)
+    
     return (
         <div className="container my-3">
             <img className="img-fluid image" src = {image} alt =""/>
