@@ -13,7 +13,7 @@ const ManageAllBookings = () => {
    
     return (
         <div>
-            <h1 className="text-center">Bookings Details</h1>
+            <h1 className="text-center">All Bookings Details</h1>
             <div className="container">
                 {
                     booking?.map(booked => <AllBookingDetails

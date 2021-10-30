@@ -1,29 +1,32 @@
 import React from 'react';
-import useBooking from '../Hooks/useBooking';
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import useAuth from '../Hooks/useAuth';
 
 const AllBookingDetails = (props) => {
-    const { booking, setBooking } = useBooking();
-    const { name, email, phone, address, date, packageName, price, duration, _id } = props.booked;
+const {user} = useAuth();
+    const { name, email, phone, address, date, packageName, price, duration } = props.booked;
 
-    const handleDeleteBooking = id => {
-        const url = `https://radiant-earth-20543.herokuapp.com/bookings/${id}`
-        fetch(url, {
-            method: 'DELETE',
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.deletedCount > 0)
-                    alert('Deleted Successfully')
-                const remainingBookings = booking?.filter(booked => booking._id !== id);
-                window.location.reload();
-                setBooking(remainingBookings);
-
-            });
+    const handleDeleteBooking = () => {
+        alert('Please log in as an Admin to delete the item. Thanks')
     }
+    const handleStatusUpdate = () => {
+        alert('Please log in as an Admin to update the status. Thanks')
+    }
+
 
     return (
         <div>
+            {
+                user.email && <Link to="/mybookings" ><Button className="ms-3 text-white" variant="success">My Bookings</Button></Link>
+            }
+
+            {
+                user.email && <Link to="/manageallbookings" ><Button className="ms-3 text-white" variant="success">Manage All Bookings</Button></Link>
+            }
+            {
+                user.email && <Link to="/mybookings" ><Button className="ms-3 text-white" variant="success">Add A New Service</Button></Link>
+            }
             <p>{name}</p>
             <p>{email}</p>
             <p>{phone}</p>
@@ -32,8 +35,8 @@ const AllBookingDetails = (props) => {
             <p>{packageName}</p>
             <p>{price}</p>
             <p>{duration}</p>
-            <Button onClick={() => handleDeleteBooking(_id)} variant="danger">Delete</Button>
-            <Button className="ms-2" variant="warning">Status: Pending</Button>
+            <Button onClick={handleDeleteBooking} variant="danger">Delete</Button>
+            <Button onClick={handleStatusUpdate} className="ms-2" variant="warning">Status: Pending</Button>
         </div>
     );
 };

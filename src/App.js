@@ -2,11 +2,13 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
+import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 import ManageAllBookings from './components/AdminDashboard/ManageAllBookings';
 import Booking from './components/Booking/Booking';
 import AuthProvider from './components/contexts/AuthProvider';
 import Home from './components/Home/Home';
 import PackageDetails from './components/Home/Packages/PackageDetails';
+import AdminLogin from './components/Login/AdminLogIn';
 import Login from './components/Login/Login';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Footer from './components/Shared/Footer';
@@ -23,9 +25,9 @@ function App() {
               <Route exact path='/'>
                 <Home></Home>
               </Route>
-              <Route path='/home'>
+              <PrivateRoute path='/home'>
                 <Home></Home>
-              </Route>
+              </PrivateRoute>
               <PrivateRoute exact path='/mybookings'>
                 <Booking></Booking>
               </PrivateRoute>
@@ -38,6 +40,12 @@ function App() {
               <Route path='/login'>
                 <Login></Login>
               </Route>
+              <Route path='/adminlogin'>
+                <AdminLogin></AdminLogin>
+              </Route>
+              <PrivateRoute path='/admindashboard'>
+                <AdminDashboard></AdminDashboard>
+              </PrivateRoute>
             </Switch>
             <Footer></Footer>
           </Router>
