@@ -20,8 +20,8 @@ const Navigation = () => {
 
 
                         </Nav>
+                        {/* conditional display */}
                         <Nav>
-                            
                             {
                                 user.displayName && <p className="my-auto mx-3">{user.displayName}</p>
                             }
@@ -29,7 +29,13 @@ const Navigation = () => {
                                 user.photoURL && <img style={{ width: '35px', height: '35px' }} src={user.photoURL} alt="User" />
                             }
                             {
-                                user.email && <Link to="/mybookings" ><Button className="ms-3" variant="warning">My Bookings</Button></Link>
+                                user.email && <Link to="/mybookings" ><Button className="ms-3 text-white" variant="success">My Bookings</Button></Link>
+                            }
+                            {
+                                user.email && <Link to="/manageallbookings" ><Button className="ms-3 text-white" variant="success">Manage All Bookings</Button></Link>
+                            }
+                            {
+                                user.email && <Link to="/mybookings" ><Button className="ms-3 text-white" variant="success">Add A New Service</Button></Link>
                             }
                             {
                                 user.email || user.uid ? <Button onClick={logOut} variant="danger" className="ms-3">Log Out</Button> :

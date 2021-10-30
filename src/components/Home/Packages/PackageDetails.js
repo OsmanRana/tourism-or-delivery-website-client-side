@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import useAuth from '../../Hooks/useAuth';
 
 const PackageDetails = () => {
     const [pack, setPack] = useState([]);
-    const {user} = useAuth();
+    const { user } = useAuth();
     const { packageId } = useParams();
+    const history = useHistory();
     const { image, name, Duration, Price, decription } = pack;
     const color2 = { red: Math.floor(Math.random() * 255), green: Math.floor(Math.random() * 255), blue: Math.floor(Math.random() * 255) };
     useEffect(() => {
@@ -17,24 +18,25 @@ const PackageDetails = () => {
     }, [packageId]);
 
     const { register, handleSubmit, reset } = useForm();
-    const onSubmit = data =>{
-        fetch('http://localhost:5000/bookings',{
+    const onSubmit = data => {
+        fetch('https://radiant-earth-20543.herokuapp.com/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(data)
         })
-        .then(res=>res.json())
-        .then(result=>{
-            if(result.insertedId) {
-                alert('Booking placed successfully')
-                reset()
-            }
-            console.log(result)
-        })
+            .then(res => res.json())
+            .then(result => {
+                if (result.insertedId) {
+                    alert('Booking placed successfully')
+                    history.push('/mybookings')
+                    reset();
+                }
+                console.log(result)
+            })
         console.log(data);
-    } 
+    }
     return (
         <div className="container">
             <h2 className="text-center my-5 text-primary" >PACKAGE DETAILS</h2>
@@ -46,7 +48,7 @@ const PackageDetails = () => {
             <h5 className="text-center my-3">{name}</h5>
             <p className="text-justify">{decription}</p>
             <form className="d-flex flex-column my-3" onSubmit={handleSubmit(onSubmit)}>
-                <input className="my-3 py-3 border-0 border-bottom" placeholder="Full Name"  defaultValue={user?.displayName}  {...register("name", { required: true })} />
+                <input className="my-3 py-3 border-0 border-bottom" placeholder="Full Name" defaultValue={user?.displayName}  {...register("name", { required: true })} />
                 <input className="my-3 py-3 border-0 border-bottom" placeholder="Email" defaultValue={user?.email} readOnly {...register("email", { required: true })} />
                 <input className="my-3 py-3 border-0 border-bottom" placeholder="Mobile Phone Number Please" type="number" {...register("phone", { required: true })} />
                 <input className="my-3 py-3 border-0 border-bottom" placeholder="Your address Please" {...register("address", { required: true })} />
