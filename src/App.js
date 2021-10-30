@@ -2,6 +2,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
+import Booking from './components/Booking/Booking';
 import AuthProvider from './components/contexts/AuthProvider';
 import Home from './components/Home/Home';
 import PackageDetails from './components/Home/Packages/PackageDetails';
@@ -24,6 +25,9 @@ function App() {
             <Route path='/home'>
               <Home></Home>
             </Route>
+            <PrivateRoute path='/mybookings'>
+              <Booking></Booking>
+            </PrivateRoute>
             <PrivateRoute exact path='/packages/:packageId'>
               <PackageDetails></PackageDetails>
             </PrivateRoute>
