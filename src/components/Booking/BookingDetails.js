@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+
 import useAuth from '../Hooks/useAuth';
 import useBooking from '../Hooks/useBooking';
 
@@ -30,17 +30,8 @@ const BookingDetails = (props) => {
     }
 
     return (
-        <div>
-            {
-                user.email && <Link to="/mybookings" ><Button className="ms-3 text-white" variant="success">My Bookings</Button></Link>
-            }
-
-            {
-                user.email && <Link to="/manageallbookings" ><Button className="ms-3 text-white" variant="success">Manage All Bookings</Button></Link>
-            }
-            {
-                user.email && <Link to="/mybookings" ><Button className="ms-3 text-white" variant="success">Add A New Service</Button></Link>
-            }
+        <div className="container my-3">
+            <hr/>
             {
                 user.email === email && <div>
                     <p>{name}</p>

@@ -29,7 +29,8 @@ const AdminDashboardInfo = (props) => {
 
 
     return (
-        <div className="container">
+        <div className="container my-3">
+            
             <div>
                 <p>{name}</p>
                 <p>{email}</p>
@@ -42,6 +43,7 @@ const AdminDashboardInfo = (props) => {
                 <Button onClick={() => handleDeleteBooking(_id)} variant="danger">Delete</Button>
                 <Button className="ms-2" variant="warning">Status: Pending</Button>
             </div>
+            <hr/>
         </div>
     );
 };

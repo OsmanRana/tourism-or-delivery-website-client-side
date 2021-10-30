@@ -8,17 +8,21 @@ import AdminDashboardInfo from './AdminDashboardInfo';
 const AdminDashboard = () => {
     const { booking } = useBooking();
     const history = useHistory()
-    const {user} = useAuth();
+    const { user } = useAuth();
     return (
         <div>
-            <h2 className="text-center">This is Admin Dashboard</h2>
-            {
-                booking?.map(booked => <AdminDashboardInfo
-                    key={booked._id}
-                    booked={booked}
-                ></AdminDashboardInfo>
-                )
-            }
+            <hr />
+            <h2 className="text-center text-secondary">This is Admin Dashboard</h2>
+            <hr />
+            <div className=" row row-cols-md-3 ">
+                {
+                    booking?.map(booked => <AdminDashboardInfo
+                        key={booked._id}
+                        booked={booked}
+                    ></AdminDashboardInfo>
+                    )
+                }
+            </div>
             {
                 !user.email && history.push('/home')
             }
