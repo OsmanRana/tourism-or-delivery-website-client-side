@@ -1,9 +1,24 @@
-import React from 'react';
-const color2 = { red: Math.floor(Math.random() * 255), green: Math.floor(Math.random() * 255), blue: Math.floor(Math.random() * 255) };
+import React, { useEffect, useState } from 'react';
+import ClientsDetails from './ClientsDetails';
+
 const HappyClients = () => {
+    const [clients, setClients] = useState([]);
+    useEffect(() => {
+        fetch('https://randomuser.me/api/?results=12')
+            .then(res => res.json())
+            .then(data => setClients(data.results))
+    }, [])
     return (
         <div>
-            <h2 style = {{ color: "rgb(" + color2.red + "," + color2.green + "," + color2.blue + ")" }} className="text-center border rounded-pill py-3">Hear from our happy Souls...</h2>
+            <h2 className="text-center border rounded-pill py-3 text-primary">Happy <span className="text-warning">Clients</span></h2>
+            <div className="row row-cols-md-3 row-cols-lg-4 my-5">
+                {
+                    clients?.map(client => <ClientsDetails
+                        key={client.email}
+                        client={client}
+                    ></ClientsDetails>)
+                }
+            </div>
         </div>
     );
 };

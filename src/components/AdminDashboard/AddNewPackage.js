@@ -1,11 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import useAuth from '../Hooks/useAuth';
-import { Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 
 const AddNewPackage = () => {
-    const { user } = useAuth();
     const { register, handleSubmit, reset } = useForm();
     const color2 = { red: Math.floor(Math.random() * 255), green: Math.floor(Math.random() * 255), blue: Math.floor(Math.random() * 255) };
 
@@ -23,11 +19,8 @@ const AddNewPackage = () => {
                     alert('Package added successfully')
                     reset();
                 }
-                console.log(data)
-            })
-
-        console.log(data);
-    }
+            });
+    };
     return (
         <div>
             <hr />

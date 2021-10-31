@@ -36,7 +36,7 @@ const Navigation = () => {
                                 user.photoURL && <img className="m-3" style={{ width: '35px', height: '35px' }} src={user.photoURL} alt="User" />
                             }
                             {
-                                user.email && <img onClick={handleUserSetting} className="ms-3 icon-size m-3" src='./user.png' alt="User" />
+                                user.email && <img onClick={handleUserSetting} className="ms-3 icon-size m-3" src='./user.png' alt="User Dashboard Settings" />
                             }
                             {
                                 user.email || user.uid ? <Button onClick={logOut} variant="danger" className="m-3">Log Out</Button> :

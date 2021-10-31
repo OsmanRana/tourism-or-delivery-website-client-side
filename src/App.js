@@ -1,5 +1,6 @@
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import AddNewPackage from './components/AdminDashboard/AddNewPackage';
@@ -21,6 +22,7 @@ import Navigation from './components/Shared/Navigation';
 function App() {
   return (
     <div className="page-container">
+      
       <div className="content-wrap container">
         <AuthProvider>
           <Router>
@@ -32,30 +34,30 @@ function App() {
               <Route path='/home'>
                 <Home></Home>
               </Route>
-              <Route exact path='/mybookings'>
+              <PrivateRoute exact path='/mybookings'>
                 <Booking></Booking>
-              </Route>
-              <Route path='/manageallbookings'>
+              </PrivateRoute>
+              <PrivateRoute path='/manageallbookings'>
                 <ManageAllBookings></ManageAllBookings>
-              </Route>
+              </PrivateRoute>
               <PrivateRoute exact path='/packages/:packageId'>
                 <PackageDetails></PackageDetails>
               </PrivateRoute>
               <Route exact path='/addnewpackage'>
                 <AddNewPackage></AddNewPackage>
               </Route>
-              <Route exact path='/addnewpackageuser'>
+              <PrivateRoute exact path='/addnewpackageuser'>
                 <AddNewPackageUser></AddNewPackageUser>
-              </Route>
+              </PrivateRoute>
               <Route path='/login'>
                 <Login></Login>
               </Route>
               <Route path='/adminlogin'>
                 <AdminLogin></AdminLogin>
               </Route>
-              <Route path='/admindashboard'>
+              <PrivateRoute path='/admindashboard'>
                 <AdminDashboard></AdminDashboard>
-              </Route>
+              </PrivateRoute>
               <PrivateRoute path='/allpackages'>
                 <AllPackages></AllPackages>
               </PrivateRoute>
