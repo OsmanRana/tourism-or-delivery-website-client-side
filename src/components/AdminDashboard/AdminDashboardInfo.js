@@ -27,16 +27,29 @@ const AdminDashboardInfo = (props) => {
         }
     };
 
+    console.log(booking)
+
     // update status
     const handleUpdateStatus = id => {
-        // const url = `https://radiant-earth-20543.herokuapp.com/bookings/${id}`
-        // fetch(url,{
-        //     method: "PUT",
-        //     headers:{
-        //         'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify(data)
-        // })
+        
+        const url = `https://radiant-earth-20543.herokuapp.com/bookings/${id}`
+        fetch(url,{
+            method: "PUT",
+            headers:{
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(booking)
+        })
+        .then(res=>res.json())
+        .then(result=>{
+            if (result.modifiedCount > 0) {
+                alert('Approved')
+                window.location.reload();
+                setBooking(booking)
+            }
+            
+            console.log(result)
+        })
 
         console.log('clicked', id)
     }

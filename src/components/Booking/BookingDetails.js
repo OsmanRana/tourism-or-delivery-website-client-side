@@ -26,6 +26,10 @@ const BookingDetails = (props) => {
                     setBooking(remainingBookings);
                 });
         }
+    };
+
+    const handleStatusUpdate = () => {
+        alert('Please log out and log in as an Admin to update the status. Thanks')
     }
 
     return (
@@ -42,7 +46,7 @@ const BookingDetails = (props) => {
                     <p>{price}</p>
                     <p>{duration}</p>
                     <Button onClick={() => handleDeleteBooking(_id)} variant="danger">Delete</Button>
-                    <Button className="ms-2" variant="warning">Status: {orderStatus}</Button>
+                    <Button  onClick={handleStatusUpdate}  className="ms-2" variant="warning">Status: {orderStatus}</Button>
                 </div>
             }
 
