@@ -1,13 +1,12 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-
 import useAuth from '../Hooks/useAuth';
 import useBooking from '../Hooks/useBooking';
 
 const BookingDetails = (props) => {
     const { booking, setBooking } = useBooking();
     const { user } = useAuth();
-    const { name, email, phone, address, date, packageName, price, duration, _id } = props.booked
+    const { name, email, phone, address, date, packageName, price, duration, _id, orderStatus } = props.booked
 
 
 
@@ -43,7 +42,7 @@ const BookingDetails = (props) => {
                     <p>{price}</p>
                     <p>{duration}</p>
                     <Button onClick={() => handleDeleteBooking(_id)} variant="danger">Delete</Button>
-                    <Button className="ms-2" variant="warning">Status: Pending</Button>
+                    <Button className="ms-2" variant="warning">Status: {orderStatus}</Button>
                 </div>
             }
 

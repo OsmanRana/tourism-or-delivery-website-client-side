@@ -10,11 +10,14 @@ const Booking = () => {
     const history = useHistory();
     const { user } = useAuth();
     const { booking } = useBooking();
+
+    const matchedBooking = booking?.filter(booked => booked.email === user.email)
+
     return (
-        <div className="container">
-            <hr/>
+        <div className="container ">
+            <hr />
             <h1 className="text-center text-secondary">Your Bookings Details</h1>
-            <hr/>
+            <hr />
             {
                 user.email && <Link to="/mybookings" ><Button className="ms-3 my-3 text-white" variant="success">My Bookings</Button></Link>
             }
@@ -23,11 +26,11 @@ const Booking = () => {
                 user.email && <Link to="/manageallbookings" ><Button className="ms-3 text-white" variant="success">Manage All Bookings</Button></Link>
             }
             {
-                user.email && <Link to="/mybookings" ><Button className="ms-3 my-3 text-white" variant="success">Add A New Service</Button></Link>
+                user.email && <Link to="/addnewpackageuser" ><Button className="ms-3 my-3 text-white" variant="success">Add A New Package</Button></Link>
             }
             <div className="container my-3">
                 {
-                    booking?.map(booked => <BookingDetails
+                    matchedBooking?.map(booked => <BookingDetails
                         key={booked._id}
                         booked={booked}
                     ></BookingDetails>

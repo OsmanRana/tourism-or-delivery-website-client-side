@@ -9,24 +9,24 @@ import { Button } from 'react-bootstrap';
 
 
 const ManageAllBookings = () => {
-    const {booking } = useBooking();
+    const { booking } = useBooking();
     const history = useHistory();
     const { user } = useAuth();
-   
+
     return (
         <div className="container">
-            <hr/>
+            <hr />
             <h1 className="text-center text-secondary">All Bookings Details</h1>
-            <hr/>
+            <hr />
             {
                 user.email && <Link to="/mybookings" ><Button className="ms-3 my-3 text-white" variant="success">My Bookings</Button></Link>
             }
 
             {
-                user.email && <Link to="/manageallbookings" ><Button className="ms-3  text-white" variant="success">Manage All Bookings</Button></Link>
+                user.email && <Link to="/manageallbookings" ><Button className="ms-3 text-white" variant="success">Manage All Bookings</Button></Link>
             }
             {
-                user.email && <Link to="/mybookings" ><Button className="ms-3 my-3 text-white" variant="success">Add A New Service</Button></Link>
+                user.email && <Link to="/addnewpackageuser" ><Button className="ms-3 my-3 text-white" variant="success">Add A New Package</Button></Link>
             }
             <div className="container">
                 {

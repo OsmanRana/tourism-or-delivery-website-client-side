@@ -16,9 +16,14 @@ const PackageDetails = () => {
             .then(res => res.json())
             .then(data => setPack(data))
     }, [packageId]);
-
+    
     const { register, handleSubmit, reset } = useForm();
+    
+    
+
     const onSubmit = data => {
+        const status = 'Pending'
+        data.orderStatus = status;
         fetch('https://radiant-earth-20543.herokuapp.com/bookings', {
             method: 'POST',
             headers: {

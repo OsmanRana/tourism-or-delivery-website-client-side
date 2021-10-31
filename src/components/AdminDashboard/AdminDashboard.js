@@ -3,6 +3,7 @@ import { useHistory } from 'react-router';
 import useAuth from '../Hooks/useAuth';
 import useBooking from '../Hooks/useBooking';
 import AdminDashboardInfo from './AdminDashboardInfo';
+import AddNewPackage from './AddNewPackage';
 
 
 const AdminDashboard = () => {
@@ -14,6 +15,8 @@ const AdminDashboard = () => {
             <hr />
             <h2 className="text-center text-secondary">This is Admin Dashboard</h2>
             <hr />
+            <h2 className="text-center text-primary">Manage All Bookings</h2>
+            <hr />
             <div className=" row row-cols-md-3 ">
                 {
                     booking?.map(booked => <AdminDashboardInfo
@@ -23,6 +26,7 @@ const AdminDashboard = () => {
                     )
                 }
             </div>
+            <AddNewPackage></AddNewPackage>
             {
                 !user.email && history.push('/home')
             }

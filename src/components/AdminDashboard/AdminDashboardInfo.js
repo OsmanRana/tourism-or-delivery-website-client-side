@@ -6,7 +6,7 @@ import { Button } from 'react-bootstrap';
 
 const AdminDashboardInfo = (props) => {
     const { booking, setBooking } = useBooking();
-    const { name, email, phone, address, date, packageName, price, duration, _id } = props.booked;
+    const { name, email, phone, address, date, packageName, price, duration, _id, orderStatus } = props.booked;
 
     const handleDeleteBooking = id => {
         const proceed = window.confirm('Are you sure, you want to delete?')
@@ -24,7 +24,7 @@ const AdminDashboardInfo = (props) => {
                     setBooking(remainingBookings);
                 });
         }
-    }
+    };
 
 
 
@@ -41,7 +41,7 @@ const AdminDashboardInfo = (props) => {
                 <p>{price}</p>
                 <p>{duration}</p>
                 <Button onClick={() => handleDeleteBooking(_id)} variant="danger">Delete</Button>
-                <Button className="ms-2" variant="warning">Status: Pending</Button>
+                <Button className="ms-2" variant="warning">Status: {orderStatus}</Button>
             </div>
             <hr/>
         </div>

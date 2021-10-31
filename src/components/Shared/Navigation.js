@@ -1,12 +1,19 @@
 import React from 'react';
+import { useHistory } from 'react-router';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import useAuth from '../Hooks/useAuth';
+import './Navigation.css'
 
 
 const Navigation = () => {
     const { user, logOut } = useAuth();
+    const history = useHistory();
+    const handleUserSetting = () => {
+        history.push('/mybookings')
+
+    }
     return (
         <div>
             <Navbar collapseOnSelect expand="lg" variant="light">
@@ -26,15 +33,17 @@ const Navigation = () => {
                                 user.displayName && <p className="my-auto mx-3">{user.displayName}</p>
                             }
                             {
-                                user.photoURL && <img style={{ width: '35px', height: '35px' }} src={user.photoURL} alt="User" />
+                                user.photoURL && <img className="m-3" style={{ width: '35px', height: '35px' }} src={user.photoURL} alt="User" />
                             }
-                                               
                             {
-                                user.email || user.uid ? <Button onClick={logOut} variant="danger" className="ms-3">Log Out</Button> :
+                                user.email && <img onClick={handleUserSetting} className="ms-3 icon-size m-3" src='./user.png' alt="User" />
+                            }
+                            {
+                                user.email || user.uid ? <Button onClick={logOut} variant="danger" className="m-3">Log Out</Button> :
                                     <Link to="/login"><Button variant="light">User Log In</Button></Link>
                             }
                             {
-                               !user.email && <Link to="/adminlogin" ><Button className="ms-3" variant="primary">Admin Log In</Button></Link>
+                                !user.email && <Link to="/adminlogin" ><Button className="ms-3" variant="primary">Admin Log In</Button></Link>
                             }
                         </Nav>
                     </Navbar.Collapse>

@@ -2,7 +2,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
+import AddNewPackage from './components/AdminDashboard/AddNewPackage';
+import AddNewPackageUser from './components/AdminDashboard/AddNewPackageUser';
 import AdminDashboard from './components/AdminDashboard/AdminDashboard';
+import AllPackages from './components/AdminDashboard/AllPackages';
 import ManageAllBookings from './components/AdminDashboard/ManageAllBookings';
 import Booking from './components/Booking/Booking';
 import AuthProvider from './components/contexts/AuthProvider';
@@ -13,6 +16,7 @@ import Login from './components/Login/Login';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Footer from './components/Shared/Footer';
 import Navigation from './components/Shared/Navigation';
+
 
 function App() {
   return (
@@ -25,26 +29,35 @@ function App() {
               <Route exact path='/'>
                 <Home></Home>
               </Route>
-              <PrivateRoute path='/home'>
+              <Route path='/home'>
                 <Home></Home>
-              </PrivateRoute>
-              <PrivateRoute exact path='/mybookings'>
+              </Route>
+              <Route exact path='/mybookings'>
                 <Booking></Booking>
-              </PrivateRoute>
-              <PrivateRoute path='/manageallbookings'>
+              </Route>
+              <Route path='/manageallbookings'>
                 <ManageAllBookings></ManageAllBookings>
-              </PrivateRoute>
+              </Route>
               <PrivateRoute exact path='/packages/:packageId'>
                 <PackageDetails></PackageDetails>
               </PrivateRoute>
+              <Route exact path='/addnewpackage'>
+                <AddNewPackage></AddNewPackage>
+              </Route>
+              <Route exact path='/addnewpackageuser'>
+                <AddNewPackageUser></AddNewPackageUser>
+              </Route>
               <Route path='/login'>
                 <Login></Login>
               </Route>
               <Route path='/adminlogin'>
                 <AdminLogin></AdminLogin>
               </Route>
-              <PrivateRoute path='/admindashboard'>
+              <Route path='/admindashboard'>
                 <AdminDashboard></AdminDashboard>
+              </Route>
+              <PrivateRoute path='/allpackages'>
+                <AllPackages></AllPackages>
               </PrivateRoute>
             </Switch>
             <Footer></Footer>
