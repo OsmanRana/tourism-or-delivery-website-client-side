@@ -13,7 +13,6 @@ const Home = () => {
             <Banner></Banner>
             <Packages></Packages>
             <HappyClients></HappyClients>
-
             <CustomPackage></CustomPackage>
         </div>
     );

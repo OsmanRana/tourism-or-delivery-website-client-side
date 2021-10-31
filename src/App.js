@@ -49,7 +49,7 @@ function App() {
               <PrivateRoute exact path='/addnewpackageuser'>
                 <AddNewPackageUser></AddNewPackageUser>
               </PrivateRoute>
-              <Route path='/login'>
+              <Route exact path='/login'>
                 <Login></Login>
               </Route>
               <Route path='/adminlogin'>

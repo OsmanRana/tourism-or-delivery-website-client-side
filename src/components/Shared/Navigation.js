@@ -23,9 +23,6 @@ const Navigation = () => {
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto fw-bold text-uppercase">
                             <Nav.Link as={HashLink} to="/home#home">Home</Nav.Link>
-                            <Nav.Link as={HashLink} to="/gellary#gellary">Gellary</Nav.Link>
-
-
                         </Nav>
                         {/* conditional display */}
                         <Nav>
