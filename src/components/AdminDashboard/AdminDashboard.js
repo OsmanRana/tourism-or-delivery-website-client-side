@@ -17,6 +17,7 @@ const AdminDashboard = () => {
             <hr />
             <h2 className="text-center text-primary">Manage All Bookings</h2>
             <hr />
+            <div>
             <div className=" row row-cols-md-3 ">
                 {
                     booking?.map(booked => <AdminDashboardInfo
@@ -27,6 +28,7 @@ const AdminDashboard = () => {
                 }
             </div>
             <AddNewPackage></AddNewPackage>
+            </div>
             {
                 !user.email && history.push('/home')
             }
