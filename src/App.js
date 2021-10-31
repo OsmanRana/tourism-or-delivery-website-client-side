@@ -14,6 +14,7 @@ import Home from './components/Home/Home';
 import PackageDetails from './components/Home/Packages/PackageDetails';
 import AdminLogin from './components/Login/AdminLogIn';
 import Login from './components/Login/Login';
+import PageNotFound from './components/PageNotFound/PageNotFound';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Footer from './components/Shared/Footer';
 import Navigation from './components/Shared/Navigation';
@@ -22,7 +23,7 @@ import Navigation from './components/Shared/Navigation';
 function App() {
   return (
     <div className="page-container">
-      
+
       <div className="content-wrap container">
         <AuthProvider>
           <Router>
@@ -61,6 +62,9 @@ function App() {
               <PrivateRoute path='/allpackages'>
                 <AllPackages></AllPackages>
               </PrivateRoute>
+              <Route path='*'>
+                <PageNotFound></PageNotFound>
+              </Route>
             </Switch>
             <Footer></Footer>
           </Router>
